@@ -17,6 +17,7 @@ public class Main
         System.out.println("-------------------------");
         System.out.printf("Maior temperatura: %,.1f\n",maiorTemperatura);
         System.out.printf("Menor temperatura: %,.1f",menorTemperatura);
-	}
+        sc.close();
+    }
 }
 
