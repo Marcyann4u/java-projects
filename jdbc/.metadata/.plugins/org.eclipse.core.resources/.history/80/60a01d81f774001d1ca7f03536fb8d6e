@@ -1,0 +1,15 @@
+package br.com.agenda.app;
+
+import br.com.agenda.model.Contato;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Contato contato = new Contato();
+		contato.setNome("Marcely");
+		contato.setIdade(18);
+		contato.setDataCadastro(new Date);
+		
+	}
+
+}
