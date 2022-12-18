@@ -1,0 +1,14 @@
+package br.com.agenda.dao;
+
+public class ContatoDAO {
+	/* CRUD
+	 * C: Create
+	 * R: Read
+	 * U: Update
+	 * D: Delete
+	 */
+	public void save() {
+		
+	}
+	
+}
