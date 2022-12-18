@@ -56,24 +56,55 @@ public class ContatoDAO {
 	}
 	
 	public List<Contato> getContatos(){
+		//Comando SQL
 		String sql = "SELECT * FROM contatos";
+		//Lista de contatos
 		List<Contato> contatos = new ArrayList<Contato>();
-	 
+		//Variáveis para conexão com o banco
 		Connection conn = null;
 		PreparedStatement pstm = null;
-		
 		//classe q recupera os dados do banco
 		ResultSet rset = null;
 		
 		try {
+			//criar uma conexão com o banco
 			conn = ConnectionFactory.createConnectionToMySQL();
+			//executar a conexão com o comando que queremos realizar (Nesse caso é a string sql)
 			pstm = (PreparedStatement) conn.prepareStatement(sql);
+			
 			rset = pstm.executeQuery();
 			
 			
-			
+			while(rset.next()) {
+				Contato contato = new Contato();
+				//pegar o id
+				contato.setId(rset.getInt("id"));
+				//pegar nome
+				contato.setNome(rset.getString("nome"));
+				//pegar idade
+				contato.setIdade(rset.getInt("idade"));
+				//pegar data cadastro
+				contato.setDataCadastro(rset.getDate("dataCadastro"));
+				contatos.add(contato);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rset != null) {
+					rset.close();
+				}
+				if(pstm != null) {
+					pstm.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		
+		return contatos;
 	}
 	
 	
